@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ShareActivity"
+    android:orientation="vertical"
+    android:gravity="center">
 
-<Button
-    android:id="@+id/submit_action"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="SUBMIT"/>
+    <TextView
+        android:id="@+id/shared_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hola"
+        android:layout_gravity="center"/>
+
+
 </LinearLayout>

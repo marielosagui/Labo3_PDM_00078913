@@ -11,40 +11,70 @@ import org.w3c.dom.Text;
 
 public class NewActivity extends AppCompatActivity {
 
-    TextView mText1;
-    String text_aux;
-    Button mSubmitAction;
+    private TextView mTextView, mTextView2, mTextView3, mTextView4;
+    private String name, pass, email, gender;
+    private Button mButton;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
+        this.mTextView = findViewById(R.id.tv_nameG);
+        this.mTextView2 = findViewById(R.id.tv_passG);
+        this.mTextView3 = findViewById(R.id.tv_emailG);
+        this.mTextView4 = findViewById(R.id.tv_generoG);
+        this.mButton = findViewById(R.id.btn_share);
 
-        mText1 =findViewById(R.id.prueba_text);
+        Intent mIntent = getIntent();
 
-        mSubmitAction=findViewById(R.id.submit2_action);
+        if(mIntent!=null){
+            this.name = mIntent.getStringExtra(AppConstants.TEXT_NAME);
+            this.pass = mIntent.getStringExtra(AppConstants.TEXT_PASS);
+            this.email = mIntent.getStringExtra(AppConstants.TEXT_MAIL);
+            this.gender = mIntent.getStringExtra(AppConstants.TEXT_GENDER);
+            this.mTextView.setText(String.valueOf(this.name));
+            this.mTextView2.setText(String.valueOf(this.pass));
 
-      text_aux="Texto Quemado";
+            this.mTextView3.setText(String.valueOf(this.email));
 
-        Intent new_Intent =getIntent();
+            this.mTextView4.setText(String.valueOf(this.gender));
 
-        if(new_Intent != null){
-          text_aux =new_Intent.getStringExtra(AppConstants.TEXT1_KEY);
+
+
         }
-        mText1.setText(new_Intent.getStringExtra(AppConstants.TEXT1_KEY));
-        mSubmitAction.setOnClickListener(new View.OnClickListener() {
+
+
+
+        mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent m_intent2 =new Intent();
 
-                m_intent2.setAction(Intent.ACTION_SEND);
-                m_intent2.setType("text/plain");
+                Intent mIntentShare = new Intent();
 
-                m_intent2.putExtra(Intent.EXTRA_TEXT,text_aux);
+                mIntentShare.setAction(Intent.ACTION_SEND);
 
-                startActivity(m_intent2);
+                mIntentShare.setType("text/plain");
+
+                mIntentShare.putExtra(Intent.EXTRA_TEXT, "Nombre: " + NewActivity.this.mTextView.getText().toString() + " " + "Contraseña: " + NewActivity.this.mTextView2.getText().toString()
+
+                        + " " + "Email: " + NewActivity.this.mTextView3.getText().toString() + " " + "Genero: " + NewActivity.this.mTextView4.getText().toString());
+
+                NewActivity.this.startActivity(mIntentShare);
+
             }
         });
 
+
+
+
+
+
+
     }
+
+
+
+
+
 }

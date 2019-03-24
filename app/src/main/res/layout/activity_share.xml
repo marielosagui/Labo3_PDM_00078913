@@ -9,11 +9,15 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/shared_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hola"
-        android:layout_gravity="center"/>
+        android:text="Informacion: "/>
 
+
+    <TextView
+        android:id="@+id/t_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" "/>
 
 </LinearLayout>
